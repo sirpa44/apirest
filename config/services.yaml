@@ -25,3 +25,11 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Adapter\CsvManager:
+        arguments:
+            $path: '%kernel.project_dir%/data/%env(csv_data)%'
+
+    Symfony\Component\Cache\Simple\Psr6Cache: ~
+    Psr\SimpleCache\CacheInterface:
+            alias: Symfony\Component\Cache\Simple\Psr6Cache
